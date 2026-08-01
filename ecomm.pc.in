@@ -1,0 +1,10 @@
+prefix=@CMAKE_INSTALL_PREFIX@
+exec_prefix=${prefix}
+libdir=${exec_prefix}/@CMAKE_INSTALL_LIBDIR@
+includedir=${prefix}/@CMAKE_INSTALL_INCLUDEDIR@
+
+Name: ecomm
+Description: eggor's common stuff
+Version: @PROJECT_VERSION@
+Libs: -L${libdir} -lecomm
+Cflags: -I${includedir}
