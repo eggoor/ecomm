@@ -1,8 +1,10 @@
-#include "unity.h"
-#include "../include/es_strutils.h"
 #include <string.h>
 #include <stdlib.h>
 #include <wchar.h>
+
+#include <ecomm/strutils.h>
+
+#include "unity.h"
 
 // Test: UTF-8 to Wide String conversion
 #ifdef _WIN32
