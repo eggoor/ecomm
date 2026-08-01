@@ -15,6 +15,17 @@ else()
     )
 endif()
 
+source_group(
+    TREE ${CMAKE_CURRENT_SOURCE_DIR}/../${PROJECT_NAME}/include
+    PREFIX "Public Headers"
+    FILES
+        ${PUBLIC_HEADERS}
+)
+
+file(GLOB PUBLIC_HEADERS CONFIGURE_DEPENDS
+    "${CMAKE_CURRENT_SOURCE_DIR}/../include/${PROJECT_NAME}/*.h"
+)
+
 source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${SOURCES})
 
 add_library(ecomm ${SOURCES})
