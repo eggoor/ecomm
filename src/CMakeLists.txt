@@ -45,7 +45,7 @@ target_sources(ecomm
     PUBLIC
         FILE_SET public_headers
         TYPE HEADERS
-        BASE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/../include/${PROJECT_NAME}
+        BASE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/../include
         FILES ${PUBLIC_HEADERS}
 )
 
@@ -53,8 +53,6 @@ target_include_directories(ecomm
     PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../include>
         $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
-    PRIVATE
-        ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
 target_precompile_headers(ecomm PRIVATE pch.h)
