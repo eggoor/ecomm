@@ -35,33 +35,24 @@ option(
 )
 
 if(CMAKE_CONFIGURATION_TYPES)
-
     message(STATUS
         "Configuring multi-config generator: ${CMAKE_GENERATOR}"
     )
-
 else()
 
     if(NOT USER_SPECIFIED_BUILD_TYPE)
-        set(
-            CMAKE_BUILD_TYPE
-            Release
-            CACHE STRING "Build type"
-            FORCE
-        )
+        set(CMAKE_BUILD_TYPE Release CACHE STRING "Build type" FORCE)
 
         message(STATUS
             "CMAKE_BUILD_TYPE not specified; defaulting to Release"
         )
     endif()
 
-    set_property(
-        CACHE CMAKE_BUILD_TYPE
-        PROPERTY STRINGS
-            Debug
-            Release
-            RelWithDebInfo
-            MinSizeRel
+    set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS
+        Debug
+        Release
+        RelWithDebInfo
+        MinSizeRel
     )
 
     message(STATUS
