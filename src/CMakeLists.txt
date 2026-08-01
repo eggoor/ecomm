@@ -15,25 +15,38 @@ else()
     )
 endif()
 
+file(GLOB PRIVATE_HEADERS CONFIGURE_DEPENDS
+    "${CMAKE_CURRENT_SOURCE_DIR}/*.h"
+)
+
 file(GLOB PUBLIC_HEADERS CONFIGURE_DEPENDS
     "${CMAKE_CURRENT_SOURCE_DIR}/../include/${PROJECT_NAME}/*.h"
 )
 
-source_group(
-    TREE ${CMAKE_CURRENT_SOURCE_DIR}/../include/${PROJECT_NAME}
-    PREFIX "Public Headers"
-    FILES
-        ${PUBLIC_HEADERS}
-)
-
-source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${SOURCES})
-
 add_library(ecomm)
+
+source_group("Source Files" FILES ${SOURCES})
+source_group("Header Files" FILES ${PRIVATE_HEADERS})
+source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR}/../include/${PROJECT_NAME}
+	PREFIX "Public Headers" FILES
+		${PUBLIC_HEADERS}
+)
 
 target_sources(ecomm
     PRIVATE
         ${SOURCES}
-        ${PUBLIC_HEADERS}
+
+    PRIVATE
+        FILE_SET private_headers
+        TYPE HEADERS
+        BASE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}
+        FILES ${PRIVATE_HEADERS}
+
+    PUBLIC
+        FILE_SET public_headers
+        TYPE HEADERS
+        BASE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/../include/${PROJECT_NAME}
+        FILES ${PUBLIC_HEADERS}
 )
 
 target_include_directories(ecomm

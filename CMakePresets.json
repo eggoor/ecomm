@@ -19,7 +19,7 @@
     "buildPresets": [
         {
             "name": "vs2022-debug",
-            "displayName": "Visual Studio Community 2022 Preview - amd64 - Debug",
+            "displayName": "Visual Studio Community 2022 - amd64 - Debug",
             "configurePreset": "vs2022",
             "configuration": "Debug"
         }
