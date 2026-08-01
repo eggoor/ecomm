@@ -1,10 +1,6 @@
 ﻿#include "pch.h"
 
-/*
- * Returns monotonic time in milliseconds.
- * Guaranteed not to go backward.
- */
-uint64_t monotonic_ms(void)
+uint64_t es_get_monotonic_time_ms(void)
 {
 #if defined(_WIN32)
     ULONGLONG t100ns = 0;
@@ -39,7 +35,7 @@ uint64_t monotonic_ms(void)
 #endif
 }
 
-void print_duration_ms(uint64_t duration_ms)
+void es_pretty_print_elapsed_time(uint64_t duration_ms)
 {
     uint64_t hours = duration_ms / (1000 * 60 * 60);
     duration_ms %= (1000 * 60 * 60);
