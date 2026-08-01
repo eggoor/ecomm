@@ -1,3 +1,5 @@
+set(target_name ecomm)
+
 set(SOURCES
     benchmark.c
     file.c
@@ -23,7 +25,7 @@ file(GLOB PUBLIC_HEADERS CONFIGURE_DEPENDS
     "${CMAKE_CURRENT_SOURCE_DIR}/../include/${PROJECT_NAME}/*.h"
 )
 
-add_library(ecomm)
+add_library(${target_name})
 
 source_group("Source Files" FILES ${SOURCES})
 source_group("Header Files" FILES ${PRIVATE_HEADERS})
@@ -32,7 +34,7 @@ source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR}/../include/${PROJECT_NAME}
 		${PUBLIC_HEADERS}
 )
 
-target_sources(ecomm
+target_sources(${target_name}
     PRIVATE
         ${SOURCES}
 
@@ -49,23 +51,25 @@ target_sources(ecomm
         FILES ${PUBLIC_HEADERS}
 )
 
-target_include_directories(ecomm
+target_include_directories(${target_name}
     PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../include>
         $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
 )
 
-target_precompile_headers(ecomm PRIVATE pch.h)
+target_precompile_headers(${target_name} PRIVATE
+    "${CMAKE_CURRENT_SOURCE_DIR}/pch.h"
+)
 
 if(WIN32)
-    target_compile_definitions(ecomm PRIVATE UNICODE _UNICODE)
+    target_compile_definitions(${target_name} PRIVATE UNICODE _UNICODE)
 
     if(BUILD_SHARED_LIBS)
-        target_compile_definitions(ecomm
+        target_compile_definitions(${target_name}
             PRIVATE ECOMM_BUILD_SHARED
             INTERFACE ECOMM_USE_SHARED
         )
     endif()
 endif()
 
-add_library(ecomm::ecomm ALIAS ecomm)
+add_library(${target_name}::${target_name} ALIAS ${target_name})
