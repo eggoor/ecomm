@@ -33,6 +33,7 @@ ECOMM_API int es_set_curr_thread_name(const char* restrict_ name);
 
 #if defined(__APPLE__) || defined(__MACH__)
 
+#include <stdlib.h>
 #include <pthread.h>
 
 typedef struct thrd {
