@@ -2,7 +2,7 @@
 
 #include <ecomm/strutils.h>
 
-int es_set_current_thread_name(const char* restrict name)
+int es_set_curr_thread_name(const char* restrict name)
 {
 	int rc;
 	if (!name || !*name)

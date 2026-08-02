@@ -29,7 +29,7 @@ extern "C" {
  *         failure. ENOSYS may be returned when the platform does not
  *         support setting thread names.
  */
-ECOMM_API int es_set_current_thread_name(const char* restrict_ name);
+ECOMM_API int es_set_curr_thread_name(const char* restrict_ name);
 
 #if defined(__APPLE__) || defined(__MACH__)
 
@@ -44,6 +44,7 @@ typedef pthread_mutex_t mtx_t;
 typedef pthread_cond_t cnd_t;
 typedef pthread_key_t tss_t;
 typedef pthread_once_t once_flag;
+typedef int (*thrd_start_t)(void *);
 typedef void (*tss_dtor_t)(void *);
 
 enum {
@@ -93,7 +94,7 @@ static void* thrd_start(void* arg)
 	return NULL;
 }
 
-static inline int thrd_create(thrd_t* thr, int (*func)(void*), void* arg)
+static inline int thrd_create(thrd_t* thr, thrd_start_t func, void* arg)
 {
 	thr->data = malloc(sizeof(*thr->data));
 	if (!thr->data)
