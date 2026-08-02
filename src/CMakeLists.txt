@@ -13,10 +13,21 @@ if(WIN32)
 		strutils_w.c
 		thread_w.c
 	)
-else()
+elseif(UNIX)
 	list(APPEND SOURCES
 		cmdutils_u.c
 	)
+	if(APPLE)
+		list(APPEND SOURCES
+			thread_m.c
+	)
+	else()
+		list(APPEND SOURCES
+			thread_l.c
+	)
+	endif()
+else()
+	message(FATAL_ERROR "What the OS?")
 endif()
 
 file(GLOB PRIVATE_HEADERS CONFIGURE_DEPENDS

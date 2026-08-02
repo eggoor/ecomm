@@ -1,8 +1,6 @@
 #ifndef PCH_U_H
 #define PCH_U_H
 
-#include <errno.h>
-
 #if defined(__APPLE__) || defined(__MACH__)
 	#include "pch_m.h"
 #elif defined(__linux__) || defined(__linux) || defined(linux)
@@ -10,5 +8,8 @@
 #else
 	#error "What the OS?"
 #endif
+
+#include <errno.h>
+#include <pthread.h>
 
 #endif // PCH_U_H
