@@ -47,16 +47,6 @@ ECOMM_API int es_copy_file(const char* restrict_ dst_filename,
 	const char* restrict_ src_filename);
 
 /**
- * @brief Wide-character version of es_copy_file.
- *
- * @param dst_filename Destination path as wide string.
- * @param src_filename Source path as wide string.
- * @return 0 on success, non-zero error code on failure.
- */
-ECOMM_API int es_copy_file_w(const wchar_t* restrict_ dst_filename,
-	const wchar_t* restrict_ src_filename);
-
-/**
  * @brief Read an entire file into a newly allocated buffer.
  *
  * The function will allocate memory for `*buffer` which the caller must free.
@@ -68,6 +58,19 @@ ECOMM_API int es_copy_file_w(const wchar_t* restrict_ dst_filename,
  */
 ECOMM_API int es_file_read(const char* restrict_ filename, char* restrict_* restrict_ buffer,
 	size_t* size);
+
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__NT__)
+/**
+ * @brief Wide-character version of es_copy_file.
+ *
+ * @param dst_filename Destination path as wide string.
+ * @param src_filename Source path as wide string.
+ * @return 0 on success, non-zero error code on failure.
+ */
+ECOMM_API int es_copy_file_w(const wchar_t* restrict_ dst_filename,
+	const wchar_t* restrict_ src_filename);
+
+#endif /* WIN32 */
 
 #ifdef __cplusplus
 }
