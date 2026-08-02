@@ -21,4 +21,4 @@
 #include "pch_u.h"
 #endif
 
-#endif // COMMON_C_PCH_H
+#endif // PCH_H
