@@ -5,7 +5,7 @@ if(DEFINED CACHE{CMAKE_BUILD_TYPE})
 	set(USER_SPECIFIED_BUILD_TYPE ON)
 endif()
 
-project(ecomm VERSION 0.1.5 LANGUAGES C
+project(ecomm VERSION 0.1.6 LANGUAGES C
 	DESCRIPTION "eggor's common stuff"
 )
 
