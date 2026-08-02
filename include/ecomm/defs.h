@@ -4,9 +4,9 @@
  *
  * This header declares small portability and utility macros used across the
  * public API of the library:
- *  - `restrict_` — portability wrapper for `restrict`.
- *  - `ES_MIN` — small min macro.
- *  - `ECOMM_API` — DLL-export/import macro for Windows builds.
+ *  - `restrict_` ï¿½ portability wrapper for `restrict`.
+ *  - `ES_MIN` ï¿½ small min macro.
+ *  - `ECOMM_API` ï¿½ DLL-export/import macro for Windows builds.
  *
  * These macros are intended for public consumption by library users.
  */
@@ -19,14 +19,6 @@
 #else
 #define restrict_ restrict
 #endif
-
-/**
- * @def ES_MIN(a, b)
- * @brief Return the minimum of `a` and `b`.
- *
- * This is a simple macro, be careful when passing expressions with side effects.
- */
-#define ES_MIN(a, b) ((a) < (b) ? (a) : (b))
 
 /**
  * @def ECOMM_API
