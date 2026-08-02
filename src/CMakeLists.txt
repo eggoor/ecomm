@@ -11,7 +11,7 @@ if(WIN32)
 		cmdutils_w.c
 		file_w.c
 		strutils_w.c
-		thread_w.c
+		threads_w.c
 	)
 elseif(UNIX)
 	list(APPEND SOURCES
@@ -19,11 +19,11 @@ elseif(UNIX)
 	)
 	if(APPLE)
 		list(APPEND SOURCES
-			thread_m.c
+			threads_m.c
 	)
 	else()
 		list(APPEND SOURCES
-			thread_l.c
+			threads_l.c
 	)
 	endif()
 else()
