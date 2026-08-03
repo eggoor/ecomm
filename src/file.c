@@ -116,7 +116,7 @@ const char* es_get_filename_from_path(const char* restrict path) {
 	return *filename == '\0' ? NULL : filename;
 }
 
-int es_confirm_overwrite(const char* filename)
+int es_confirm_overwrite(const char *filename)
 {
     FILE *fp = fopen(filename, "r");
     if (fp == NULL)
@@ -126,11 +126,12 @@ int es_confirm_overwrite(const char* filename)
     printf("File \"%s\" already exists. Overwrite? [y/N]: ", filename);
     fflush(stdout);
 
-    int c = getchar();
-    while (c != '\n' && c != EOF)
-        c = getchar();
+    int answer = getchar();
 
-    return (tolower(c) == 'y');
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
+
+    return tolower((unsigned char)answer) == 'y';
 }
 
 static int copy_file(FILE* restrict dst, FILE* restrict src)
