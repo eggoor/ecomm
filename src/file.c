@@ -34,7 +34,7 @@ int es_copy_file(const char* restrict dst_filename,
 		return rc;
 	}
 
-	return copy_file(dst, src);
+	return es_do_copy_file(dst, src);
 }
 
 char* es_replace_file_extension(const char* restrict_ filename,
@@ -173,7 +173,7 @@ int es_confirm_overwrite(const char *filename)
     return tolower((unsigned char)answer) == 'y';
 }
 
-static int copy_file(FILE* restrict dst, FILE* restrict src)
+int es_do_copy_file(FILE* restrict dst, FILE* restrict src)
 {
 	int rc;
 	char buffer[4096];

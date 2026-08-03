@@ -18,5 +18,5 @@ int es_copy_file_w(const wchar_t* restrict dst_filename,
 		return rc;
 	}
 
-	return copy_file(dst, src);
+	return es_do_copy_file(dst, src);
 }

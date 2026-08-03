@@ -1,3 +1,3 @@
 #pragma once
 
-static int copy_file(FILE* restrict dst, FILE* restrict src);
+int es_do_copy_file(FILE* restrict dst, FILE* restrict src);
