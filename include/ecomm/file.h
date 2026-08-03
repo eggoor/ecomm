@@ -59,6 +59,14 @@ ECOMM_API int es_copy_file(const char* restrict_ dst_filename,
 ECOMM_API int es_file_read(const char* restrict_ filename, char* restrict_* restrict_ buffer,
 	size_t* size);
 
+/**
+ * @brief Confirm if a file should be overwritten.
+ *
+ * @param filename Path to the file to overwrite.
+ * @return 1 if confirmed, otherwise 0.
+ */
+ECOMM_API int es_confirm_overwrite(const char* filename);
+
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__NT__)
 /**
  * @brief Wide-character version of es_copy_file.
