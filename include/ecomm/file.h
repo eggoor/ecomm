@@ -37,6 +37,17 @@ ECOMM_API const char* es_get_filename_from_path(const char* restrict_ path);
 ECOMM_API const char* es_get_file_extension(const char* restrict_ filename);
 
 /**
+ * @brief Replace the file extension in a filename.
+ *
+ * @param filename NUL-terminated filename or path.
+ * @param new_ext New file extension (including the leading '.').
+ * @param prc Optional pointer to receive error code (0 on success, non-zero on failure).
+ * @return New filename on success, NULL on failure.
+ */
+ECOMM_API char* es_replace_file_extension(const char* restrict_ filename,
+	const char* restrict_ new_ext, int* prc);
+
+/**
  * @brief Copy a file from `src_filename` to `dst_filename`.
  *
  * @param dst_filename Destination file path.

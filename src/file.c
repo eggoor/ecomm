@@ -37,6 +37,40 @@ int es_copy_file(const char* restrict dst_filename,
 	return copy_file(dst, src);
 }
 
+char* es_replace_file_extension(const char* restrict_ filename,
+	const char* restrict_ new_ext, int* prc)
+{
+	if (!filename || !*filename || !new_ext || !*new_ext) {
+		if (prc)
+			*prc = EINVAL;
+		return NULL;
+	}
+
+	const char* dot = strrchr(filename, '.');
+	if (!dot || dot == filename) {
+		if (prc)
+			*prc = EINVAL;
+		return NULL;
+	}
+
+	size_t filename_len = dot - filename;
+	size_t new_ext_len = strlen(new_ext);
+	char* new_filename = malloc(filename_len + new_ext_len + 1);
+	if (!new_filename) {
+		if (prc)
+			*prc = ENOMEM;
+		return NULL;
+	}
+
+	memcpy(new_filename, filename, filename_len);
+	strcpy(new_filename + filename_len, new_ext);
+
+	if (prc)
+		*prc = 0;
+
+	return new_filename;
+}
+
 int es_file_read(const char* restrict filename, char* restrict* restrict buffer,
 	size_t* size)
 {
