@@ -5,7 +5,6 @@
  * This header declares small portability and utility macros used across the
  * public API of the library:
  *  - `restrict_` � portability wrapper for `restrict`.
- *  - `ES_MIN` � small min macro.
  *  - `ECOMM_API` � DLL-export/import macro for Windows builds.
  *
  * These macros are intended for public consumption by library users.
