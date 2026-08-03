@@ -46,16 +46,20 @@ char* es_replace_file_extension(const char* restrict_ filename,
 		return NULL;
 	}
 
-	const char* dot = strrchr(filename, '.');
+	const char *dot = strrchr(filename, '.');
 	if (!dot || dot == filename) {
 		if (prc)
 			*prc = EINVAL;
 		return NULL;
 	}
 
+	if (*new_ext == '.')
+		++new_ext;
+
 	size_t filename_len = dot - filename;
 	size_t new_ext_len = strlen(new_ext);
-	char* new_filename = malloc(filename_len + new_ext_len + 1);
+
+	char* new_filename = malloc(filename_len + new_ext_len + 2);
 	if (!new_filename) {
 		if (prc)
 			*prc = ENOMEM;
@@ -63,7 +67,8 @@ char* es_replace_file_extension(const char* restrict_ filename,
 	}
 
 	memcpy(new_filename, filename, filename_len);
-	strcpy(new_filename + filename_len, new_ext);
+	new_filename[filename_len] = '.';
+	strcpy(new_filename + filename_len + 1, new_ext);
 
 	if (prc)
 		*prc = 0;
