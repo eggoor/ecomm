@@ -168,7 +168,8 @@ int es_confirm_overwrite(const char *filename)
     int answer = getchar();
 
     int c;
-    while ((c = getchar()) != '\n' && c != EOF);
+	if (answer != '\n')
+		while ((c = getchar()) != '\n' && c != EOF);
 
     return tolower((unsigned char)answer) == 'y';
 }
