@@ -52,8 +52,7 @@ ECOMM_API char* utf8_to_acp(const char* const restrict_ str, int* prc);
  * @param dst Destination buffer receiving the resulting string (NUL-terminated).
  * @param dst_size Size of `dst` in bytes.
  * @param src Source NUL-terminated string.
- * @return Number of characters written (excluding terminating NUL) on success,
- *         or a negative error code on failure.
+ * @return 0 on success, a negative error code on failure.
  */
 ECOMM_API int es_ellipsize(char* restrict_ dst, size_t dst_size,
 	const char* restrict_ src);
